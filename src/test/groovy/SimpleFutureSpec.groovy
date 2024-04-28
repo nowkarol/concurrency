@@ -1,15 +1,16 @@
+import net.karolnowak.SimpleFuture
+
 import java.util.concurrent.Callable
-import java.util.concurrent.FutureTask
 import java.util.concurrent.RunnableFuture
 
-class FutureTaskSpec extends FutureSpec {
+class SimpleFutureSpec extends FutureSpec {
     @Override
     <T> RunnableFuture<T> getFuture(Callable<T> callable) {
-        return new FutureTask(callable)
+        return new SimpleFuture(callable)
     }
 
     @Override
     <T> RunnableFuture<T> getFuture(Runnable runnable, T result) {
-        return new FutureTask(runnable, result)
+        return new SimpleFuture(runnable, result)
     }
 }
